@@ -1,0 +1,25 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      CONVERT_DATA_DIR: /tmp/convert
+      PORT: "8080"
+      RUST_LOG: convert_anything=info,tower_http=info
+    volumes:
+      - convert-data:/tmp/convert
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  convert-data:

@@ -1,0 +1,6 @@
+backend/target
+frontend/node_modules
+frontend/dist
+.cursor
+.DS_Store
+*.log

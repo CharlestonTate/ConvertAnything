@@ -1,0 +1,14 @@
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# SPA fallback. Point VITE_API_URL at your hosted conversion API
+# (Netlify cannot run the Rust/FFmpeg/LibreOffice backend).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
